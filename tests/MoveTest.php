@@ -282,14 +282,9 @@ SQL;
             ));
         $query .= $sql;
 
-        $db = new SQLite3('db.sqlite');
+        $db = new PDO('sqlite::memory:');
         $db->exec($query);
-
-        $result = $db->query('SELECT * FROM a;');
-        for ($rows = []; $row = $result->fetchArray(SQLITE3_ASSOC); $rows[] = $row);
-
-        $db->close();
-        return $rows;
+        return $db->query('SELECT * FROM a;', PDO::FETCH_ASSOC)->fetchAll();
     }
 
 }

@@ -67,7 +67,7 @@ class MpttHelper
                 break;
 
             default:
-                throw new Exception('Invalid position: \'' . $position . '\'');
+                throw new Exception("Invalid position: '$position'");
         }
 
         $increment = $max - $node['lft'] + 1;
